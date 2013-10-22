@@ -87,7 +87,7 @@ EOF
     . "$JACKBONEGAP_PATH/ios/generate-assets.sh"
 
     # Remove useless assets.
-    rm -fr "$PROJECT_PATH/www/res"
+    rm -fr "$IOS_PROJECT_PATH/www/res"
 
     # Adjust the mess (lib install doesn't work... testflight.js file is unneeded)
     mkdir -p "$IOS_PROJECT_PATH/build"
