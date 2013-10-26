@@ -39,9 +39,10 @@ if ! test -e "$JS_LIBS_PATH" || ! test -e "$DOWNLOADS_PATH/npmdone" || test "$JA
     echo > "$DOWNLOADS_PATH/npmdone"
 fi
 
-# Download and install PhoneGap
-echo "--- PhoneGap"
-httpPackageZIP "$PHONEGAP_URL" "$LIBS_PATH/phonegap"
+# Download and install Cordova
+echo "--- Cordova"
+rm -f "$LIBS_PATH/cordova"
+ln -s "$DOWNLOADS_PATH/node_modules/cordova" "$LIBS_PATH/cordova"
 
 # Download and install JQuery.Mobile
 echo "--- JQuery.Mobile"
@@ -57,19 +58,28 @@ echo "--- Backbone.localStorage"
 httpPackageZIP "https://github.com/jeromegn/Backbone.localStorage/archive/master.zip" "$JS_LIBS_PATH/backbone.localstorage"
 
 # Download GitHub's collection of PhoneGap plugins.
-echo "--- PhoneGap Plugins"
-gitPackage "https://github.com/j3k0/phonegap-plugins.git"
+echo "--- Email Composer"
+gitPackage "https://github.com/andaloo/email-composer.git"
+
+echo "--- Console"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git"
+echo "--- Device"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git"
+echo "--- Media"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git"
+echo "--- Dialogs"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git"
+echo "--- Splash"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git"
 
 if [ "x$SYSTEM" = "xDarwin" ]; then
 
-    # Download a few Cordova plugins that uses Plugman
-    echo "--- TestFlight"
-    gitPackage "https://github.com/j3k0/TestFlightPlugin.git"
-    # httpPackageZIP "https://github.com/j3k0/TestFlightPlugin/archive/master.zip" "$LIBS_PATH/TestFlightPlugin"
+    # Download a few Cordova plugins
+    #echo "--- TestFlight"
+    #gitPackage "https://github.com/j3k0/TestFlightPlugin.git"
 
     echo "--- SQLite iOS"
     gitPackage "https://github.com/j3k0/PhoneGap-SQLitePlugin-iOS.git"
-    # httpPackageZIP "https://github.com/j3k0/PhoneGap-SQLitePlugin-iOS/archive/master.zip" "$LIBS_PATH/SQLitePlugin-iOS"
 
     # Download Fruitstrap, a tool to upload builds to an iOS device from command line
     echo "--- Fruitstrap"

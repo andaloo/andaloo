@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "dependencies": {
+        "cordova":       "3.1.0-0.1.0",
         "underscore":    "latest",
         "backbone":      "latest",
         "handlebars":    "latest",
@@ -12,7 +13,6 @@
         "jsdoc-toolkit": "latest",
         "less":          "latest",
         "jackbone":      "latest",
-        "plugman":       "0.6.1",
         "jshint":        "1.1.0"
     }
 }

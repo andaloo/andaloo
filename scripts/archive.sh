@@ -38,9 +38,9 @@ if [ "x$BUILD_IOS" = "xYES" ] ; then
 
     # Archive the IPA and dSYM
     rm -fr "$IPA" "$DSYM" "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app.dSYM.zip"
-    cp "$IOS_PROJECT_PATH/build/$PROJECT_NAME.ipa" "$IPA"
-    ( cd "$IOS_PROJECT_PATH/build/"; zip -r "$PROJECT_NAME.app.dSYM.zip" "$PROJECT_NAME.app.dSYM" ) || exit 1
-    cp "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app.dSYM.zip" "$DSYM"
+    cp "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.ipa" "$IPA"
+    ( cd "$IOS_PROJECT_PATH/platforms/ios/build/"; zip -r "$PROJECT_NAME.app.dSYM.zip" "$PROJECT_NAME.app.dSYM" ) || exit 1
+    cp "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app.dSYM.zip" "$DSYM"
 fi
 
 # Build for Android

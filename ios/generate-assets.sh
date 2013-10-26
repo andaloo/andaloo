@@ -14,8 +14,8 @@ function cropResize() {
     convert "$src" $extra_before -resize $size^ -gravity Center -crop $size+0+0 +repage $extra "$dest"
 }
 
-ICON_PATH="$IOS_PROJECT_PATH/$PROJECT_NAME/Resources/icons"
-SPLASH_PATH="$IOS_PROJECT_PATH/$PROJECT_NAME/Resources/splash"
+ICON_PATH="$IOS_PROJECT_PATH/platforms/ios/$PROJECT_NAME/Resources/icons"
+SPLASH_PATH="$IOS_PROJECT_PATH/platforms/ios/$PROJECT_NAME/Resources/splash"
 
 DEFAULT="$PROJECT_PATH/assets/Default.png"
 ICON="$PROJECT_PATH/assets/Icon.png"

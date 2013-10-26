@@ -5,8 +5,7 @@
 define([
     "jquery",
     "underscore",
-    "logger",
-    "testflight"
+    "logger"
 ], function ($, _, Logger) {
     "use strict";
 
@@ -23,7 +22,8 @@ define([
 
         if (typeof cordova !== "undefined") {
             try {
-                Cordova.testflight = cordova.require("cordova/plugin/testflightsdk");
+                //Cordova.testflight = cordova.require("cordova/plugin/testflightsdk");
+                Cordova.testflight = undefined;
             }
             catch (e) {
                 Logger.log("TestFlight not found");

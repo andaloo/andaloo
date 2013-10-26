@@ -74,10 +74,13 @@ function ($, _, Backbone, Jackbone, Cordova, Testing, Logger, SQLite, AppDelegat
     }
 
     // If cordova (PhoneGap) is present, we'll wait for 'deviceready' before doing anything.
+    console.log('[andaloo] Start');
     if (window.cordova) {
+        console.log('[andaloo] Add deviceready listener');
         document.addEventListener('deviceready', onDeviceReady, false);
     }
     else {
+        console.log('[andaloo] No cordova, let\'s start');
         onDeviceReady();
     }
 });

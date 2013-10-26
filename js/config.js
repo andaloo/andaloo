@@ -9,9 +9,9 @@ module.exports = {
         backbone:      'libs/backbone/backbone',
         jquerymobile:  'libs/jquery.mobile/jquery.mobile',
         handlebars:    'libs/handlebars/dist/handlebars',
-        testflight:    'libs/testflight',
+        // testflight:    'libs/testflight',
         sqlite:        'libs/sqlite',
-        emailcomposer: 'libs/emailcomposer',
+        // emailcomposer: 'libs/emailcomposer',
         stacktrace:    'libs/stacktrace-js/stacktrace',
         jackbone:      'libs/jackbone/jackbone'
     },

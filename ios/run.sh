@@ -1,12 +1,12 @@
 #!/bin/bash
 IOS_PROJECT_PATH="$PROJECT_PATH/build/ios/$PROJECT_NAME"
-if ! test -e "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app"; then
+if ! test -e "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app"; then
     echo "$PROJECT_NAME.app not built yet."
     exit 1
 fi
 
 if [ "x$target" = "xios-sim" ]; then
-    "$IOS_PROJECT_PATH/cordova/run"
+    "$IOS_PROJECT_PATH/platforms/ios/cordova/run"
 elif [ "x$target" = "xios-dev" ]; then
 
     GDB_COMMANDS_FILE="/tmp/fruitstrap-gdb-commands"
@@ -43,8 +43,8 @@ end
 continue
 EOF
         STDOUT="$PROJECT_PATH/build/stdout.txt"
-        echo "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE"
-        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" > "$STDOUT" 2>&1 || error "Failed to install to device"
+        echo "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE"
+        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" > "$STDOUT" 2>&1 || error "Failed to install to device"
         cat "$STDOUT"
         result=`cat "$STDOUT" | grep QUnit.done`
         [ "x$result" = "x" ] && exit 1
@@ -56,6 +56,6 @@ EOF
         [ "x$failed" != "x0" ] && exit 1 || exit 0
     else
         echo 'continue' > "$GDB_COMMANDS_FILE"
-        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" || error "Failed to install to device"
+        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" || error "Failed to install to device"
     fi
 fi
