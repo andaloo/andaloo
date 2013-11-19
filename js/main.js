@@ -10,10 +10,10 @@ require([
     'cdv',
     'testing',
     'logger',
-    'sqlite',
+    'andaloo',
     'appdelegate'
 ],
-function ($, _, Backbone, Jackbone, Cordova, Testing, Logger, SQLite, AppDelegate) {
+function ($, _, Backbone, Jackbone, Cordova, Testing, Logger, Andaloo, AppDelegate) {
 
     'use strict';
 
@@ -47,11 +47,11 @@ function ($, _, Backbone, Jackbone, Cordova, Testing, Logger, SQLite, AppDelegat
 
     function onDeviceReady() {
 
+        Andaloo.initialize();
+
+        console.log('[andaloo] Device ready');
         var testingEnabled = window.TESTING || false;
 
-        // Initialize some plugins.
-        Logger.initialize();
-        Cordova.initialize();
         addDeviceClass();
 
         // Catch pause and resume events.

@@ -10,7 +10,7 @@ module.exports = {
         jquerymobile:  'libs/jquery.mobile/jquery.mobile',
         handlebars:    'libs/handlebars/dist/handlebars',
         // testflight:    'libs/testflight',
-        sqlite:        'libs/sqlite',
+        // sqlite:        'libs/sqlite',
         // emailcomposer: 'libs/emailcomposer',
         stacktrace:    'libs/stacktrace-js/stacktrace',
         jackbone:      'libs/jackbone/jackbone'
@@ -36,9 +36,9 @@ module.exports = {
         },
         stacktrace: {
             exports: 'printStackTrace'
-        },
-        emailcomposer: {
-            exports: 'EmailComposer'
         }
+        // emailcomposer: {
+        //     exports: 'EmailComposer'
+        // }
     }
 };

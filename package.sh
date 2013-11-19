@@ -7,3 +7,6 @@ JQUERYMOBILE_URL="http://jquerymobile.com/resources/download/jquery.mobile-$JQUE
 # JQuery
 # TODO: Should be in NPM, but fails for some reason
 JQUERY_JS="http://code.jquery.com/jquery-2.0.0.js"
+
+# BACKBONE_LOCALSTORAGE="https://github.com/jeromegn/Backbone.localStorage/archive/master.zip"
+BACKBONE_LOCALSTORAGE="https://github.com/jeromegn/Backbone.localStorage/archive/v1.1.7.zip"

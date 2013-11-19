@@ -106,16 +106,16 @@ if [ "x$only" != "xonly" ]; then
     sed -e '/TEMPLATES/r build/tmp/templates.js' "$JACKBONEGAP_PATH/js/templates.js.in" > "$TMPJS/templates.js"
 
     # Install platform specific libraries
-    if [ "x$BUILD_IOS" = xYES ]; then
-        #cp "$DOWNLOADS_PATH/TestFlightPlugin/www/testflight.js" "$TMPJS/libs/testflight.js"
-        cp "$DOWNLOADS_PATH/PhoneGap-SQLitePlugin-iOS/www/SQLitePlugin.js" "$TMPJS/libs/sqlite.js"
-        #cp "$DOWNLOADS_PATH/phonegap-plugins/iOS/EmailComposerWithAttachments/www/EmailComposer.js" "$TMPJS/libs/emailcomposer.js"
-    else
+    # if [ "x$BUILD_IOS" = xYES ]; then
+        # cp "$DOWNLOADS_PATH/TestFlightPlugin/www/testflight.js" "$TMPJS/libs/testflight.js"
+        # cp "$DOWNLOADS_PATH/sqlite/www/SQLitePlugin.js" "$TMPJS/libs/sqlite.js"
+        # cp "$DOWNLOADS_PATH/email/www/EmailComposer.js" "$TMPJS/libs/emailcomposer.js"
+    # else
         # Empty files, so RequireJS finds something.
-        #echo > "$TMPJS/libs/testflight.js"
-        echo > "$TMPJS/libs/sqlite.js"
-        #echo > "$TMPJS/libs/emailcomposer.js"
-    fi
+        # echo > "$TMPJS/libs/testflight.js"
+        # echo > "$TMPJS/libs/sqlite.js"
+        # echo > "$TMPJS/libs/emailcomposer.js"
+    # fi
 
     # Copy version number to Javascript
     VERSION="`cat VERSION`"
@@ -243,5 +243,5 @@ fi
 
 echo -e "${T_BOLD}[DONE]$T_RESET"
 echo
-echo -e "run $PROJECT_NAME with \"${T_BOLD}jackbone run${T_RESET}\""
+echo -e "run $PROJECT_NAME with \"${T_BOLD}andaloo run${T_RESET}\""
 echo

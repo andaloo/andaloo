@@ -6,8 +6,8 @@
  * using an SQLite backend already.
  */
 /* global Backbone */
-define(["logger", "underscore", "events", "jackbone", "sqlite"],
-function (Logger, _, Events, Jackbone/*, SQLite*/) {
+define(["logger", "underscore", "events", "jackbone", "andaloo"],
+function (Logger, _, Events, Jackbone, Andaloo) {
     "use strict";
 
     /**
@@ -26,7 +26,7 @@ function (Logger, _, Events, Jackbone/*, SQLite*/) {
     Database.loggingEnabled = false;
 
     /** Request wether transactions (BEGIN/COMMIT) are supported */
-    Database.supportsTransactions = (window.sqlitePlugin ? true : false);
+    Database.supportsTransactions = false;
 
     /** Open a database from its name.
      *
@@ -37,9 +37,15 @@ function (Logger, _, Events, Jackbone/*, SQLite*/) {
     Database.open = function (name, collections, callback) {
         this.collections = collections;
 
-        if (window.sqlitePlugin && window.sqlitePlugin.openDatabase) {
+        if (Andaloo.SQL && Andaloo.SQL.openDatabase) {
+
+            // Adjust config
+            Database.supportsTransactions = true;
+            Database.exec = plugin_exec;
+
+            // Open DB
             Logger.log("Loading SQLite Plugin.");
-            this.db = window.sqlitePlugin.openDatabase({name: name});
+            this.db = Andaloo.SQL.openDatabase({name: name});
         }
         else {
             Logger.log("SQLite Plugin Not Loaded.");
@@ -196,14 +202,8 @@ function (Logger, _, Events, Jackbone/*, SQLite*/) {
      * @param callback a function taking an array of rows as argument.
      * @return JSON output.
      */
-    if (window.sqlitePlugin) {
-        Database.exec = plugin_exec;
-        Database.execTransaction = webSQL_execTransaction;
-    }
-    else {
-        Database.exec = webSQL_exec;
-        Database.execTransaction = webSQL_execTransaction;
-    }
+    Database.exec = webSQL_exec;
+    Database.execTransaction = webSQL_execTransaction;
 
 
     /** Delete everything from the database.

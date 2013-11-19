@@ -49,9 +49,9 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
     }
 
     # plugin "TestflightPlugin"
-    plugin "PhoneGap-SQLitePlugin-iOS"
+    plugin "sqlite"
     no-objc-arc SQLitePlugin.m
-    plugin "email-composer"
+    plugin "email"
     no-objc-arc EmailComposer.m
 
     if test -e "$PROJECT_PATH/scripts/ios-plugins.sh"; then
@@ -122,8 +122,8 @@ EOF
 
     # Install libs
     mkdir -p "$IOS_PROJECT_PATH/platforms/ios/build/"
-    cp "$IOS_PROJECT_PATH/plugins"/*/src/ios/*.a "$IOS_PROJECT_PATH/platforms/ios/"
-    cp "$IOS_PROJECT_PATH/plugins"/*/src/ios/*.a "$IOS_PROJECT_PATH/platforms/ios/build/"
+    # cp "$IOS_PROJECT_PATH/plugins"/*/src/ios/*.a "$IOS_PROJECT_PATH/platforms/ios/"
+    # cp "$IOS_PROJECT_PATH/plugins"/*/src/ios/*.a "$IOS_PROJECT_PATH/platforms/ios/build/"
     
     # Get default PhoneGap files
     # rsync -a build/ios/www/ ios/www

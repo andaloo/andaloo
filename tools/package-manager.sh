@@ -27,16 +27,21 @@ fi
 # Parameters: URL
 function gitPackage {
     url="$1"
+    tag="$2"
+    if [ "x$tag" != "x" ]; then
+        tag="-b $tag"
+    fi
+
     name=`basename "$url" .git`
     if ! test -e "$DOWNLOADS_PATH/$name"; then
-        if test -e "$HOME/.jackbone/downloads/$name"; then
-            rsync --delete -av "$HOME/.jackbone/downloads/$name/" "$DOWNLOADS_PATH/$name"
+        if test -e "$HOME/.andaloo/downloads/$name"; then
+            rsync --delete -av "$HOME/.andaloo/downloads/$name/" "$DOWNLOADS_PATH/$name"
             ( cd "$DOWNLOADS_PATH/$name"; git pull || exit 1 ) || error "Could not update $name"
         else
             if test -e "$HOME/GitHub/$name"; then
-                ( cd "$DOWNLOADS_PATH"; git clone "$HOME/GitHub/$name" || exit 1 ) || error "Failed getting $name from ~/GitHub/"
+                ( cd "$DOWNLOADS_PATH"; git clone $tag "$HOME/GitHub/$name" || exit 1 ) || error "Failed getting $name from ~/GitHub/"
             else
-                ( cd "$DOWNLOADS_PATH"; git clone "$url" || exit 1 ) || error "Could not download $name"
+                ( cd "$DOWNLOADS_PATH"; git clone $tag "$url" || exit 1 ) || error "Could not download $name"
             fi
         fi
     else
@@ -54,8 +59,8 @@ function httpPackageZIP {
 
     if test ! -e "$DOWNLOADS_PATH/$file" || test ! -e "$outdir"; then
         if test ! -e "$DOWNLOADS_PATH/$file"; then
-            if test -e "$HOME/.jackbone/downloads/$file"; then
-                cp "$HOME/.jackbone/downloads/$file" "$DOWNLOADS_PATH/$file"
+            if test -e "$HOME/.andaloo/downloads/$file"; then
+                cp "$HOME/.andaloo/downloads/$file" "$DOWNLOADS_PATH/$file"
             else
                 wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
             fi
@@ -83,8 +88,8 @@ function httpPackageTGZ {
 
     if test ! -e "$DOWNLOADS_PATH/$file" || test ! -e "$outdir"; then
         if test ! -e "$DOWNLOADS_PATH/$file"; then
-            if test -e "$HOME/.jackbone/downloads/$file"; then
-                cp "$HOME/.jackbone/downloads/$file" "$DOWNLOADS_PATH/$file"
+            if test -e "$HOME/.andaloo/downloads/$file"; then
+                cp "$HOME/.andaloo/downloads/$file" "$DOWNLOADS_PATH/$file"
             else
                 wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
             fi

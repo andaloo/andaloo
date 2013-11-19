@@ -5,7 +5,7 @@
  */
 /* jshint nonew:false, maxstatements:33 */
 /* global SOURCE_LINES */
-define(['jquery', 'underscore', 'stacktrace'], function ($, _, Stacktrace) {
+define(['jquery', 'underscore', 'stacktrace'], function ($, _, stacktrace) {
     'use strict';
     /**
      * @name Logger
@@ -222,7 +222,7 @@ define(['jquery', 'underscore', 'stacktrace'], function ($, _, Stacktrace) {
         Logger.error('Stack:', 1);
         Logger.error('------------------------', 1);
         var skipLines = 2;
-        var stack = Stacktrace({e: new Error('dummy')});
+        var stack = stacktrace({e: new Error('dummy')});
         _(stack).each(function (line) {
             // Ignore first lines (logStacktrace itself)
             if (skipLines) {

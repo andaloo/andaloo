@@ -6,7 +6,7 @@ command="$1"
 target="$2"
 
 export PROJECT_PATH="`pwd`"
-export EFILE="$PROJECT_PATH/build/jackbone.out"
+export EFILE="$PROJECT_PATH/build/andaloo.out"
 rm -f "$EFILE"
 cd `dirname "$0"`
 export JACKBONEGAP_PATH="`pwd`"
@@ -17,17 +17,16 @@ if [ "x$FROM_JACKBONE" = "x" ]; then
     export FROM_JACKBONE=YES
     ROOT_JACKBONE=YES
     echo -ne "$T_GREEN"
-    echo -e "      _            _    _                      "
-    echo -e "     | |          | |  | |                     "
-    echo -e "     | | __ _  ___| | _| |__   ___  _ __   ___ "
-    echo -e " _   | |/ _' |/ __| |/ / '_ \ / _ \| '_ \ / _ \\"
-    echo -e "| |__| | (_| | (__|   <| |_) | (_) | | | |  __/"
-    echo -e " \____/ \__,_|\___|_|\_\_.__/ \___/|_| |_|\___|"
+    echo -e "                 _       _             "
+    echo -e "  __ _ _ __   __| | __ _| | ___   ___  "
+    echo -e " / _\` | '_ \\ / _\` |/ _\` | |/ _ \\ / _ \\ "
+    echo -e "| (_| | | | | (_| | (_| | | (_) | (_) |"
+    echo -e " \\__,_|_| |_|\__,_|\\__,_|_|\\___/ \\___/  $T_RESET  $@$T_GREEN"
     echo -e "$T_RESET"
 fi
                             
 function usage {
-    echo "usage: ${T_BOLD}jackbone <command>${T_RESET}"
+    echo "usage: ${T_BOLD}andaloo <command>${T_RESET}"
     echo
     echo "Valid commands are:"
     echo
@@ -43,7 +42,7 @@ function usage {
     echo -e "- ${T_BOLD}help${T_RESET}         Show this help message."
     echo -e "- ${T_BOLD}upload${T_RESET}       Upload to TestFlight."
     echo
-    echo -e "Type '${T_BOLD}jackbone <command> --help${T_RESET}' for more help on a specific command"
+    echo -e "Type '${T_BOLD}andaloo <command> --help${T_RESET}' for more help on a specific command"
     echo
     exit 1
 }

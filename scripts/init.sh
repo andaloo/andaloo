@@ -54,32 +54,35 @@ echo "--- JQuery"
 httpPackageJS "$JQUERY_JS" "$JS_LIBS_PATH/jquery/jquery.js"
 
 # Download and install Backbone.localStorage
-echo "--- Backbone.localStorage"
-httpPackageZIP "https://github.com/jeromegn/Backbone.localStorage/archive/master.zip" "$JS_LIBS_PATH/backbone.localstorage"
+# echo "--- Backbone.localStorage"
+# httpPackageZIP "$BACKBONE_LOCALSTORAGE" "$JS_LIBS_PATH/backbone.localstorage"
 
 # Download GitHub's collection of PhoneGap plugins.
-echo "--- Email Composer"
-gitPackage "https://github.com/andaloo/email-composer.git"
+echo "--- Plugins.Email"
+gitPackage "https://github.com/andaloo/email.git"
 
-echo "--- Console"
+echo "--- Plugins.Console"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git"
-echo "--- Device"
+echo "--- Plugins.Device"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git"
-echo "--- Media"
+echo "--- Plugins.Media"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git"
-echo "--- Dialogs"
+echo "--- Plugins.Dialogs"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git"
-echo "--- Splash"
+echo "--- Plugins.Splash"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git"
+
+echo "--- Plugins.SQLite"
+gitPackage "https://github.com/andaloo/sqlite.git"
 
 if [ "x$SYSTEM" = "xDarwin" ]; then
 
     # Download a few Cordova plugins
-    #echo "--- TestFlight"
-    #gitPackage "https://github.com/j3k0/TestFlightPlugin.git"
+    # echo "--- TestFlight"
+    # gitPackage "https://github.com/j3k0/TestFlightPlugin.git"
 
-    echo "--- SQLite iOS"
-    gitPackage "https://github.com/j3k0/PhoneGap-SQLitePlugin-iOS.git"
+    # echo "--- SQLite iOS"
+    # gitPackage "https://github.com/j3k0/PhoneGap-SQLitePlugin-iOS.git"
 
     # Download Fruitstrap, a tool to upload builds to an iOS device from command line
     echo "--- Fruitstrap"
@@ -123,6 +126,6 @@ fi
 echo "--- DONE"
 
 echo
-echo -e "You can now build and test ${PROJECT_NAME} with ${T_BOLD}jackbone build${T_RESET}"
+echo -e "You can now build and test ${PROJECT_NAME} with ${T_BOLD}andaloo build${T_RESET}"
 echo
 
