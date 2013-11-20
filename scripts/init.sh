@@ -53,10 +53,6 @@ cleanVersion "$JS_LIBS_PATH/jquery.mobile" "$JQUERYMOBILE_VERSION"
 echo "--- JQuery"
 httpPackageJS "$JQUERY_JS" "$JS_LIBS_PATH/jquery/jquery.js"
 
-# Download and install Backbone.localStorage
-# echo "--- Backbone.localStorage"
-# httpPackageZIP "$BACKBONE_LOCALSTORAGE" "$JS_LIBS_PATH/backbone.localstorage"
-
 # Download GitHub's collection of PhoneGap plugins.
 echo "--- Plugins.Email"
 gitPackage "https://github.com/andaloo/email.git"
@@ -76,13 +72,6 @@ echo "--- Plugins.SQLite"
 gitPackage "https://github.com/andaloo/sqlite.git"
 
 if [ "x$SYSTEM" = "xDarwin" ]; then
-
-    # Download a few Cordova plugins
-    # echo "--- TestFlight"
-    # gitPackage "https://github.com/j3k0/TestFlightPlugin.git"
-
-    # echo "--- SQLite iOS"
-    # gitPackage "https://github.com/j3k0/PhoneGap-SQLitePlugin-iOS.git"
 
     # Download Fruitstrap, a tool to upload builds to an iOS device from command line
     echo "--- Fruitstrap"

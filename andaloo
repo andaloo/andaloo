@@ -2,6 +2,7 @@
 
 set -e
 
+ANDALOO_VERSION="3.1.0"
 command="$1"
 target="$2"
 
@@ -58,7 +59,7 @@ function checkNeededFiles() {
 script="scripts/$command.sh"
 test -e "$script" || usage
 
-export DOWNLOADS_PATH="$PROJECT_PATH/.downloads"
+export DOWNLOADS_PATH="$HOME/.andaloo/$ANDALOO_VERSION/downloads"
 export LIBS_PATH="$PROJECT_PATH/libs"
 export JS_LIBS_PATH="$PROJECT_PATH/app/js/libs"
 

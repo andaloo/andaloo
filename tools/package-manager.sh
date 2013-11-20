@@ -59,11 +59,7 @@ function httpPackageZIP {
 
     if test ! -e "$DOWNLOADS_PATH/$file" || test ! -e "$outdir"; then
         if test ! -e "$DOWNLOADS_PATH/$file"; then
-            if test -e "$HOME/.andaloo/downloads/$file"; then
-                cp "$HOME/.andaloo/downloads/$file" "$DOWNLOADS_PATH/$file"
-            else
-                wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
-            fi
+            wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
         fi
         rm -fr "$DOWNLOADS_PATH/tmp"
         mkdir -p "$DOWNLOADS_PATH/tmp"
@@ -88,11 +84,7 @@ function httpPackageTGZ {
 
     if test ! -e "$DOWNLOADS_PATH/$file" || test ! -e "$outdir"; then
         if test ! -e "$DOWNLOADS_PATH/$file"; then
-            if test -e "$HOME/.andaloo/downloads/$file"; then
-                cp "$HOME/.andaloo/downloads/$file" "$DOWNLOADS_PATH/$file"
-            else
-                wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
-            fi
+            wget --no-check-certificate -O "$DOWNLOADS_PATH/$file" "$url" || error "wget failed to download $url."
         fi
         rm -fr "$DOWNLOADS_PATH/tmp"
         mkdir -p "$DOWNLOADS_PATH/tmp"
