@@ -12,8 +12,8 @@ function (Logger, Cordova) {
     return {
         initialize: function () {
  
-            this.SQL    = SQLitePlugin;
-            this.Email  = EmailComposer;
+            this.SQL    = window.SQLitePlugin;
+            this.Email  = window.EmailComposer;
             this.Logger = Logger;
 
             // Initialize some plugins.
