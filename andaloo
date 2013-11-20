@@ -62,7 +62,7 @@ script="scripts/$command.sh"
 test -e "$script" || usage
 
 export DOWNLOADS_PATH="$HOME/.andaloo/$ANDALOO_VERSION/downloads"
-export LIBS_PATH="$PROJECT_PATH/libs"
+export LIBS_PATH="$HOME/.andaloo/$ANDALOO_VERSION/libs"
 export JS_LIBS_PATH="$PROJECT_PATH/app/js/libs"
 
 if [ "x$command" != xboilerplate ]; then

@@ -1,6 +1,7 @@
 {
     "name": "andaloo",
     "version": "3.1.0",
+    "repository": "https://github.com/andaloo/andaloo.git",
     "private": true,
     "dependencies": {
         "cordova":       "3.1.0-0.1.0",

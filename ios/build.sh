@@ -62,6 +62,7 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
     plugin "cordova-plugin-dialogs"
     plugin "cordova-plugin-media"
     plugin "cordova-plugin-splashscreen"
+    plugin "cordova-plugin-camera"
 
     # Prepare the project.
     "$CORDOVA" prepare ios

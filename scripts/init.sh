@@ -67,6 +67,8 @@ echo "--- Plugins.Dialogs"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git" "3.0.0"
 echo "--- Plugins.Splash"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git" "3.0.0"
+echo "--- Plugins.Camera"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git" "r0.2.4"
 
 echo "--- Plugins.SQLite"
 gitPackage "https://github.com/andaloo/sqlite.git" $ANDALOO_BRANCH
@@ -85,15 +87,13 @@ fi
 # httpPackageZIP "https://github.com/brodyspark/PhoneGap-SQLitePlugin-Android/archive/master.zip" "$LIBS_PATH/SQLitePlugin-Android"
 
 # XML Manipulation
-if [ "x$BUILD_ANDROID" = "xYES" ]; then
-    echo "--- XML Starlet"
-    if which xmlstarlet > /dev/null; then
-        echo "Found `which xmlstarlet`"
-    else
-        httpPackageTGZ "http://sourceforge.net/projects/xmlstar/files/latest/download" "$LIBS_PATH/xmlstarlet"
-        if test ! -e "$LIBS_PATH/xmlstarlet/xml"; then
-            ( cd "$LIBS_PATH/xmlstarlet" && ./configure && make || exit 1 ) > /dev/null || error "Failed to build xmlstarlet"
-        fi
+echo "--- XML Starlet"
+if which xmlstarlet > /dev/null; then
+    echo "Found `which xmlstarlet`"
+else
+    httpPackageTGZ "http://sourceforge.net/projects/xmlstar/files/latest/download" "$LIBS_PATH/xmlstarlet"
+    if test ! -e "$LIBS_PATH/xmlstarlet/xml"; then
+        ( cd "$LIBS_PATH/xmlstarlet" && ./configure && make || exit 1 ) > /dev/null || error "Failed to build xmlstarlet"
     fi
 fi
 
