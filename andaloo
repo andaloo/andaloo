@@ -1,8 +1,10 @@
 #!/bin/bash
 
+ANDALOO_VERSION="3.1.0"
+ANDALOO_BRANCH="31"
+
 set -e
 
-ANDALOO_VERSION="3.1.0"
 command="$1"
 target="$2"
 

@@ -39,7 +39,7 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
         if [ "x${ppath:3:1}" = "x:" ] || [ "x${ppath:4:1}" = "x:" ] || [ "x${ppath:5:1}" = "x:" ]; then
             "$CORDOVA" plugin add "$ppath" || error "Failed to install plugin: $pname"
         else
-            "$CORDOVA" plugin add "$PROJECT_PATH/.downloads$ppath/$pname" || error "Failed to install plugin: $pname"
+            "$CORDOVA" plugin add "$DOWNLOADS_PATH$ppath/$pname" || error "Failed to install plugin: $pname"
         fi
     }
 

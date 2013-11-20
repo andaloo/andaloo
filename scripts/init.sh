@@ -55,21 +55,21 @@ httpPackageJS "$JQUERY_JS" "$JS_LIBS_PATH/jquery/jquery.js"
 
 # Download GitHub's collection of PhoneGap plugins.
 echo "--- Plugins.Email"
-gitPackage "https://github.com/andaloo/email.git"
+gitPackage "https://github.com/andaloo/email.git" $ANDALOO_BRANCH
 
 echo "--- Plugins.Console"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git" "3.0.0"
 echo "--- Plugins.Device"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git" "3.0.0"
 echo "--- Plugins.Media"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git" "3.0.0"
 echo "--- Plugins.Dialogs"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git" "3.0.0"
 echo "--- Plugins.Splash"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git" "3.0.0"
 
 echo "--- Plugins.SQLite"
-gitPackage "https://github.com/andaloo/sqlite.git"
+gitPackage "https://github.com/andaloo/sqlite.git" $ANDALOO_BRANCH
 
 if [ "x$SYSTEM" = "xDarwin" ]; then
 

@@ -2,16 +2,23 @@
 IOS_PROJECT_PATH="$PROJECT_PATH/build/ios/$PROJECT_NAME"
 
 if [ "x$target" = "xios-sim" ]; then
-    if ! test -e "$IOS_PROJECT_PATH/platforms/ios/build/emulator/$PROJECT_NAME.app"; then
-        echo "$PROJECT_NAME.app not built yet."
-        exit 1
+    IOS_APP="$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app"
+    if ! test -e "$IOS_APP"; then
+        IOS_APP="$IOS_PROJECT_PATH/platforms/ios/build/emulator/$PROJECT_NAME.app"
+        if ! test -e "$IOS_APP"; then
+            echo "$PROJECT_NAME.app not built yet."
+            exit 1
+        fi
     fi
     "$IOS_PROJECT_PATH/platforms/ios/cordova/run"
 elif [ "x$target" = "xios-dev" ]; then
-
-    if ! test -e "$IOS_PROJECT_PATH/platforms/ios/build/device/$PROJECT_NAME.app"; then
-        echo "$PROJECT_NAME.app not built yet."
-        exit 1
+    IOS_APP="$IOS_PROJECT_PATH/platforms/ios/build/$PROJECT_NAME.app"
+    if ! test -e "$IOS_APP"; then
+        IOS_APP="$IOS_PROJECT_PATH/platforms/ios/build/device/$PROJECT_NAME.app"
+        if ! test -e "$IOS_APP"; then
+            echo "$PROJECT_NAME.app not built yet."
+            exit 1
+        fi
     fi
     GDB_COMMANDS_FILE="/tmp/fruitstrap-gdb-commands"
     FRUITSTRAP="$DOWNLOADS_PATH/fruitstrap/fruitstrap"
@@ -47,8 +54,8 @@ end
 continue
 EOF
         STDOUT="$PROJECT_PATH/build/stdout.txt"
-        echo "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/device/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE"
-        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/device/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" > "$STDOUT" 2>&1 || error "Failed to install to device"
+        echo "$FRUITSTRAP" -b "$IOS_APP" -t 5 -d -x "$GDB_COMMANDS_FILE"
+        "$FRUITSTRAP" -b "$IOS_APP" -t 5 -d -x "$GDB_COMMANDS_FILE" > "$STDOUT" 2>&1 || error "Failed to install to device"
         cat "$STDOUT"
         result=`cat "$STDOUT" | grep QUnit.done`
         [ "x$result" = "x" ] && exit 1
@@ -60,6 +67,6 @@ EOF
         [ "x$failed" != "x0" ] && exit 1 || exit 0
     else
         echo 'continue' > "$GDB_COMMANDS_FILE"
-        "$FRUITSTRAP" -b "$IOS_PROJECT_PATH/platforms/ios/build/device/$PROJECT_NAME.app" -t 5 -d -x "$GDB_COMMANDS_FILE" || error "Failed to install to device"
+        "$FRUITSTRAP" -b "$IOS_APP" -t 5 -d -x "$GDB_COMMANDS_FILE" || error "Failed to install to device"
     fi
 fi

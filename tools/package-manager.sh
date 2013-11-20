@@ -28,8 +28,8 @@ fi
 function gitPackage {
     url="$1"
     tag="$2"
-    if [ "x$tag" != "x" ]; then
-        tag="-b $tag"
+    if [ "x$tag" = "x" ]; then
+        tag="master"
     fi
 
     name=`basename "$url" .git`
@@ -39,13 +39,13 @@ function gitPackage {
             ( cd "$DOWNLOADS_PATH/$name"; git pull || exit 1 ) || error "Could not update $name"
         else
             if test -e "$HOME/GitHub/$name"; then
-                ( cd "$DOWNLOADS_PATH"; git clone $tag "$HOME/GitHub/$name" || exit 1 ) || error "Failed getting $name from ~/GitHub/"
+                ( cd "$DOWNLOADS_PATH"; git clone -b $tag "$HOME/GitHub/$name" || exit 1 ) || error "Failed getting $name from ~/GitHub/"
             else
-                ( cd "$DOWNLOADS_PATH"; git clone $tag "$url" || exit 1 ) || error "Could not download $name"
+                ( cd "$DOWNLOADS_PATH"; git clone -b $tag "$url" || exit 1 ) || error "Could not download $name"
             fi
         fi
     else
-        ( cd "$DOWNLOADS_PATH/$name"; git pull || exit 1) || error "Could not update $name"
+        ( cd "$DOWNLOADS_PATH/$name"; git pull origin $tag || exit 1) || error "Could not update $name"
     fi
 }
 
