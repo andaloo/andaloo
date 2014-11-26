@@ -58,17 +58,17 @@ echo "--- Plugins.Email"
 gitPackage "https://github.com/andaloo/email.git" $ANDALOO_BRANCH
 
 echo "--- Plugins.Console"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git" "3.0.0"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git" "r0.2.11"
 echo "--- Plugins.Device"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git" "3.0.0"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git" "r0.2.12"
 echo "--- Plugins.Media"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git" "3.0.0"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git" "r0.2.14"
 echo "--- Plugins.Dialogs"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git" "3.0.0"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git" "r0.2.10"
 echo "--- Plugins.Splash"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git" "3.0.0"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git" "r0.3.4"
 echo "--- Plugins.Camera"
-gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git" "r0.2.4"
+gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git" "r0.3.3"
 
 echo "--- Plugins.SQLite"
 gitPackage "https://github.com/andaloo/sqlite.git" $ANDALOO_BRANCH
