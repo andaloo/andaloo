@@ -13,7 +13,7 @@ fi
 
 if ! which wget > /dev/null; then
     error "Please install wget to retrieve dependencies." \
-            "- OSX: https://s3.amazonaws.com/techtach/files/wget/113/wget"
+            "- OSX: https://s3.amazonaws.com/techtach/files/wget/113/wget" \
             "- Linux: apt-get install wget"
 fi
 
