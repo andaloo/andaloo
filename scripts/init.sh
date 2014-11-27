@@ -55,7 +55,7 @@ httpPackageJS "$JQUERY_JS" "$JS_LIBS_PATH/jquery/jquery.js"
 
 # Download GitHub's collection of PhoneGap plugins.
 echo "--- Plugins.Email"
-gitPackage "https://github.com/andaloo/email.git" $ANDALOO_BRANCH
+gitPackage "https://github.com/andaloo/email.git" "$ANDALOO_BRANCH"
 
 echo "--- Plugins.Console"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git" "r0.2.11"
@@ -71,7 +71,7 @@ echo "--- Plugins.Camera"
 gitPackage "https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git" "r0.3.3"
 
 echo "--- Plugins.SQLite"
-gitPackage "https://github.com/andaloo/sqlite.git" $ANDALOO_BRANCH
+gitPackage "https://github.com/andaloo/sqlite.git" "$ANDALOO_BRANCH"
 
 if [ "x$SYSTEM" = "xDarwin" ]; then
 

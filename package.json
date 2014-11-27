@@ -1,10 +1,11 @@
 {
     "name": "andaloo",
-    "version": "3.1.0",
+    "version": "4.1.0",
     "repository": "https://github.com/andaloo/andaloo.git",
     "private": true,
     "dependencies": {
         "cordova":       "~4.1.0",
+        "ios-deploy":    "~1.3.0",
         "underscore":    "~1.5.2",
         "backbone":      "~1.0.0",
         "handlebars":    "~1.1.2",

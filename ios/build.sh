@@ -7,6 +7,9 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
     echo -e "${T_BOLD}[BUILD] build/ios${T_RESET}"
 
     CORDOVA="$LIBS_PATH/cordova/bin/cordova"
+    function CORDOVA() {
+        PROJECT_PATH= "$CORDOVA" $@
+    }
     IOS_PROJECT_PATH="$PROJECT_PATH/build/ios/$PROJECT_NAME"
 
     if [ "x$conf" = "xwww" ] && test -e "$IOS_PROJECT_PATH"; then
@@ -20,26 +23,25 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
     mkdir -p "$IOS_PROJECT_PATH"
 
     # Create iOS Project
-    echo -n i
-    "$CORDOVA" create "$IOS_PROJECT_PATH" "$IOS_BUNDLE_ID" "$PROJECT_NAME"
+    log "$CORDOVA" create "$IOS_PROJECT_PATH" "$IOS_BUNDLE_ID" "$PROJECT_NAME"
+    CORDOVA create "$IOS_PROJECT_PATH" "$IOS_BUNDLE_ID" "$PROJECT_NAME"
 
     # Install Cordova Plugins.
     cd "$IOS_PROJECT_PATH"
-    "$CORDOVA" platform add ios
+    log "$CORDOVA" platform add ios
+    CORDOVA platform add ios || bash
 
     # TODO: Some should not be installed for final distribution.
     # INSTALL CDV TestFlight"
 
-    echo -n OS
     function plugin {
         pname="$1"
         ppath="$2"
-        echo -n .
 
         if [ "x${ppath:3:1}" = "x:" ] || [ "x${ppath:4:1}" = "x:" ] || [ "x${ppath:5:1}" = "x:" ]; then
-            "$CORDOVA" plugin add "$ppath" || error "Failed to install plugin: $pname"
+            CORDOVA plugin add "$ppath" || error "Failed to install plugin: $pname"
         else
-            "$CORDOVA" plugin add "$DOWNLOADS_PATH$ppath/$pname" || error "Failed to install plugin: $pname"
+            CORDOVA plugin add "$DOWNLOADS_PATH$ppath/$pname" || error "Failed to install plugin: $pname"
         fi
     }
 
@@ -65,10 +67,9 @@ if [ "x$BUILD_IOS" = "xYES" ]; then
     plugin "cordova-plugin-camera"
 
     # Prepare the project.
-    "$CORDOVA" prepare ios
+    CORDOVA prepare ios
 
     # Patch the project.
-    echo -n .
     patch -l -p0 << EOF > /dev/null || error "Patch failed"
 --- $IOS_PROJECT_PATH/platforms/ios/$PROJECT_NAME.xcodeproj/project.pbxproj	2013-03-23 09:24:16.000000000 +0200
 +++ $IOS_PROJECT_PATH/platforms/ios/$PROJECT_NAME.xcodeproj/project.pbxproj	2013-03-23 11:28:31.000000000 +0200
@@ -129,6 +130,7 @@ EOF
     # Get default PhoneGap files
     # rsync -a build/ios/www/ ios/www
     # Patch them with our own files
+    rsync -a build/www/ "$IOS_PROJECT_PATH/www"
     rsync -a build/www/ "$IOS_PROJECT_PATH/platforms/ios/www"
     # Remove version number from cordova.js
     # . "$JACKBONEGAP_PATH/package.sh" # PHONEGAP_VERSION is stored here.

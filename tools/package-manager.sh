@@ -45,7 +45,7 @@ function gitPackage {
             fi
         fi
     else
-        ( cd "$DOWNLOADS_PATH/$name"; git pull origin $tag || exit 1) || error "Could not update $name"
+        ( cd "$DOWNLOADS_PATH/$name"; git checkout -b $tag || git checkout $tag; git pull origin $tag || exit 1) || error "Could not update $name"
     fi
 }
 
