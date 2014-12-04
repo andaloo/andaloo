@@ -192,7 +192,7 @@ if [ "x$only" != "xonly" ]; then
                 H="auto"
             fi
             echo -n .
-            "$JACKBONEGAP_PATH/tools/buildimage.sh" "$FILE" $W $H "$TYPE" || exit "Resizing $FILE failed"
+            "$JACKBONEGAP_PATH/tools/buildimage.sh" "$FILE" $W $H "$TYPE" || error "Resizing $FILE failed"
         done
     else
         rsync --delete -a app/img/ build/www/img || error "Could't copy images"

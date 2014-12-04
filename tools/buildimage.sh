@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage() {
-    echo "usage: $0 <filename> <w> <h>"
+    echo "usage: $0 <filename> <w> <h> <type>"
     echo
     echo "Resize image"
     exit 1
@@ -64,7 +64,7 @@ function cropResize() {
     # Compute HD width
     hd_w=$((w * 2))
     if [ $hd_w -gt $src_w ]; then
-        echo "[WARNING] Resizing $src from $src_w to $hd_w." >> build/logs.txt
+        echo "[WARNING] Resizing $src from $src_w to $hd_w."
     fi
 
     if test "$src" -nt "$dest/img/$destfile" || [ x$size_changed = xYES ]; then
@@ -127,3 +127,5 @@ else
         usage
     fi
 fi
+
+exit 0
