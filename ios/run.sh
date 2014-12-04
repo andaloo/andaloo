@@ -4,7 +4,7 @@ IOS_PROJECT_PATH="$PROJECT_PATH/build/ios/$PROJECT_NAME"
 CORDOVA="$LIBS_PATH/cordova/bin/cordova"
 function CORDOVA() {
     
-    PATH="$PROJECT_PATH/app/js/libs/ios-deploy:$PATH" PROJECT_PATH= "$CORDOVA" $@
+    PATH="$PROJECT_PATH/app/js/libs/ios-deploy:$PROJECT_PATH/app/js/libs/ios-sim/build/Release:$PATH" PROJECT_PATH= "$CORDOVA" $@
 }
 
 if [ "x$target" = "xios-sim" ]; then
