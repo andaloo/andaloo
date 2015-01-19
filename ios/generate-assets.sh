@@ -32,9 +32,23 @@ cropResize "$DEFAULT" "$SPLASH_PATH/Default-Portrait@2x~ipad.png" 1536 2016
 cropResize "$DEFAULT" "$SPLASH_PATH/Default-Portrait~ipad.png" 768 1024
 cropResize "$DEFAULT" "$SPLASH_PATH/Default@2x~iphone.png" 640 960 " " "$extraiphone"
 cropResize "$DEFAULT" "$SPLASH_PATH/Default~iphone.png" 320 480 " " "$extraiphone"
+cropResize "$DEFAULT" "$SPLASH_PATH/Default-667h.png" 750 1334 " " "$extraiphone"
+cropResize "$DEFAULT" "$SPLASH_PATH/Default-736h.png" 1242 2208 " " "$extraiphone"
+cropResize "$DEFAULT" "$SPLASH_PATH/Default-Landscape-736h.png" 2208 1242
 
+cropResize "$ICON" "$ICON_PATH/icon-40.png" 40 40 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-40@2x.png" 80 80 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-50.png" 50 50 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-50@2x.png" 100 100 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-60.png" 60 60 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-60@2x.png" 120 120 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-60@3x.png" 180 180 -flatten
 cropResize "$ICON" "$ICON_PATH/icon-72.png" 72 72 -flatten
 cropResize "$ICON" "$ICON_PATH/icon-72@2x.png" 144 144 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-76.png" 76 76 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-76@2x.png" 152 152 -flatten
 cropResize "$ICON" "$ICON_PATH/icon.png" 57 57 -flatten
 cropResize "$ICON" "$ICON_PATH/icon@2x.png" 114 114 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-small.png" 29 29 -flatten
+cropResize "$ICON" "$ICON_PATH/icon-small@2x.png" 58 58 -flatten
 
