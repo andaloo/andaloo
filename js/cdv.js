@@ -60,6 +60,11 @@ define([
             Cordova.testflight = false;
         }
 
+        if (window.StatusBar) {
+            StatusBar.overlaysWebView(false);
+            StatusBar.styleBlackOpaque();
+        }
+
         var ua = navigator.userAgent.toLowerCase();
         Cordova.isAndroid = ua.indexOf("android") > -1;
         Cordova.isIos = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false);
